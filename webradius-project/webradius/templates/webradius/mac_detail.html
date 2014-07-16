@@ -1,0 +1,285 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" %}
+{% endblock %}
+{% block titlepage %} {% trans "Detalhes da Máquina" %} {% endblock %}
+{% block titlepageicon %} <div class="ethernet"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<br/><br/>
+<div style="clear:both;"> </div>
+
+<div class="add_title_sub"> &nbsp; {% trans "Máquina" %}</div>
+<div class="add_content_sub" >
+    <table border="0" cellspacing="3" cellpadding="0" style="font-size: 12px;">
+        <tr> 
+            <th></th> <th></th>
+        </tr>
+        <tr> 
+            <td style="font-weight: bold;">{% trans "MAC" %}:</td> <td style="font-weight: bold;">{{ object.mac }}</td>  
+        </tr>
+        <tr> 
+            <td>{% trans "Descrição" %}:</td> <td>{{ object.description }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "Fabricante" %}:</td> <td>{{ vendor.vendor_name|default_if_none:"" }}</td>
+        </tr> 
+        <tr> 
+            <td>{% trans "Data de cadastro" %}:</td> <td>{{ object.insert_date }}</td> 
+        </tr>        
+        <tr>
+        {% if not object.expiry_time %}
+        	<td>{% trans "Data de expiração" %}:</td> <td>{% trans "Não expira" %}</td>
+        {% else %}
+            <td>{% trans "Data de expiração" %}:</td> <td>{{ object.expiry_time }}</td>
+        {% endif %}
+        </tr>        
+    </table>
+</div>
+
+<div class="add_title_sub"> &nbsp; {% trans "Concessão de IP" %}</div>
+<div class="add_content_sub" >
+    <table border="0" cellspacing="3" cellpadding="0" style="font-size: 12px;">
+    	<tr> 
+	    	<td>{% trans "VLAN ID" %}:</td> <td>{{ object.vlan_id|default_if_none:"" }}</td> 
+	    </tr>
+        {% if object.full_access %}
+        	<td>{% trans "Acesso irrestrito" %}:</td> <td>{% trans "Sim" %}</td>
+        {% else %}
+            <td>{% trans "Acesso irrestrito" %}:</td> <td>{% trans "Não" %}</td>
+        {% endif %}
+       	{% if object.static and object.static_standalone %}
+       		<tr>
+        		<td>{% trans "Estático?" %}:</td> <td>{% trans "Sim" %}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "Estático fora de um Pool" %}:</td> <td>{% trans "Sim" %}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "IP estático" %}:</td> <td>{{ object.static_ip }}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "Máscara" %}:</td> <td>{{ object.pool.mask }}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "Roteador" %}:</td> <td>{{ object.pool.router_address }}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "DNS" %}:</td> <td>{{ object.pool.dns_server }}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "Domínio" %}:</td> <td>{{ object.pool.domain_name|default_if_none:"" }}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "Domínio para IP reverso" %}:</td> <td>{{ object.pool.rev_domain_name|default_if_none:"" }}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "Próximo servidor" %}:</td> <td>{{ object.pool.next_server|default_if_none:"" }}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "Caminho para o arquivo de boot" %}:</td> <td>{{ object.pool.root_path|default_if_none:"" }}</td>
+        	</tr>
+        	<tr> 
+            	<td>{% trans "Arquivo de boot" %}:</td> <td>{{ object.pool.boot_filename|default_if_none:"" }}</td>
+        	</tr>
+        	<tr> 
+	            <td>{% trans "NBNS/WINS" %}:</td> <td>{{ object.pool.netbios_name_server|default_if_none:"" }}</td>
+	        </tr>
+	        <tr>
+	            <td>{% trans "NBNS/WINS 2" %}:</td> <td>{{ object.pool.netbios_name_server2|default_if_none:"" }}</td>
+	        </tr>
+			{%  if object.pool.netbios_node_type == 1 %}
+	        	<td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Broadcast" %}</td>
+	        {% elif object.pool.netbios_node_type == 2 %}
+	            <td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Peer" %}</td>
+	        {% elif object.pool.netbios_node_type == 4 %}
+	            <td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Mixed" %}</td>
+	        {% elif object.pool.netbios_node_type == 8 %}
+	            <td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Hybrid" %}</td>
+	        {% else %}
+	            <td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Desconhecido" %}</td>
+	        {% endif %}
+        {% else %}
+        	{% if object.static %}
+	        	<tr> 
+	            	<td>{% trans "Estático" %}:</td> <td>{% trans "Sim" %}</td>
+	        	</tr>
+	        	<tr> 
+	            	<td>{% trans "Estático fora de um Pool" %}:</td> <td>{% trans "Não" %}</td>
+	        	</tr>
+        	{% else %}
+        		<tr> 
+	            	<td>{% trans "Estático" %}:</td> <td>{% trans "Não" %}</td>
+	        	</tr>
+        	{% endif %}
+            <tr> 
+            	<td>{% trans "Pool" %}:</td><td><a href="{% url "webradius:pool_detail" object.pool.id %}">{{ object.pool.description }}</a></td>  
+        	</tr>
+        	{% if object.static %}
+	        	<tr> 
+	            	<td>{% trans "IP estático" %}:</td> <td>{{ object.static_ip }}</td>
+	        	</tr>
+        	{% endif %}
+        {% endif %}
+    </table>
+</div>
+
+<br/>
+
+<div class="add_title_sub"> &nbsp; {% trans "IPs concedidos a esta máquina" %}</div>
+<div class="add_content_sub">
+
+<table class="tablelist display">
+    <thead>
+        <tr>
+            <th>{% trans "IP" %}</th>
+            <th>{% trans "Pool" %}</th>
+            <th>{% trans "Data de expiração da concessão" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in ips %}
+        <tr>            
+            <td>{{object.framedipaddress}}</td>
+            {% if object.is_static %}
+            	<td>{% trans "IP estático" %}</td>
+            {% else %}
+            	<td><a href="{% url "webradius:pool_detail_by_name" object.pool_name %}"> {{ object.pool_name }}</a></td>
+            {% endif %}
+            <td>{{object.expiry_time|date:'d/m/Y H:i:s'}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br/>
+
+<div class="add_title_sub"> &nbsp; {% trans "Últimas 20 Sessões" %}</div>
+<div class="add_content_sub">
+
+<table class="tablex">
+    <thead>
+        <tr>
+            <th>{% trans "NAS" %}</th>
+            <th>{% trans "Dados porta = Unit/Subslot/Porta - VLAN" %}</th>
+            <th>{% trans "Início da sessão" %}</th>
+            <th>{% trans "Término da sessão" %}</th>
+            <th>{% trans "Causa do término" %}</th>
+            <th>{% trans "Tempo de sessão" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in sessions %}
+        <tr>
+            {% if object.nas %}
+                <td><a href="{% url "webradius:nas_detail" object.nas.id %}">{{ object.nas.shortname }} - {{ object.nasipaddress }}</a></td>
+            {% else %}
+                <td>{{ object.nasipaddress|default_if_none:"" }}</td>
+            {% endif %}
+            <td>{{ object.portdetailed }}</td>
+            <td>{{ object.acctstarttime|date:'d-m-Y H:i' }}</td>
+            <td>{{ object.acctstoptime|date:'d-m-Y H:i' }}</td>
+            <td>{{ object.acctterminatecause|default_if_none:"" }}</td>
+            <td>{{ object.sessiontime }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br/>
+
+<div class="add_title_sub"> &nbsp; {% trans "Últimas 20 autenticações" %}</div>
+<div class="add_content_sub">
+
+<table class="tablex">
+    <thead>
+        <tr>
+            <th>{% trans "Resposta" %}</th>
+            <th>{% trans "Data e hora" %}</th>
+            <th>{% trans "Dados porta = Unit/Subslot/Porta - VLAN" %}</th>
+            <th>{% trans "NAS" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in auths %}
+        <tr>
+            <td>{{ object.reply }}</td>
+            <td>{{ object.authdate }}</td>
+            <td>{{ object.portdetailed }}</td>
+            {% if object.nas %}
+                <td><a href="{% url "webradius:nas_detail" object.nas.id %}">{{ object.nas.shortname }} - {{ object.nasipaddress }}</a></td>
+            {% else %}
+                <td>{{ object.nasipaddress|default_if_none:"" }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br/>
+
+<div class="add_title_sub"> &nbsp; {% trans "Entradas DNS" %}</div>
+<div class="add_content_sub">
+
+<table class="tablex">
+    <thead>
+        <tr>
+            <th>{% trans "Hostname" %}</th>
+            <th>{% trans "A" %}</th>
+            <th>{% trans "PTR" %}</th>
+            <th>{% trans "TXT" %}</th>
+            <th>{% trans "IP" %}</th>
+            <th>{% trans "Data a partir da qual poderá ser deletada" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in dns_entrys %}
+        <tr>
+            <td>{{ object.hostname }}</td>
+            <td>{{ object.fwd_name }}</td>
+            <td>{{ object.rev_name }}</td>
+            <td>{{ object.txt }}</td>
+            <td>{{ object.ip }}</td>
+            <td>{{ object.expiry }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br/>
+
+<div class="add_title_sub"> &nbsp; {% trans "Últimas 20 alterações nesta máquina" %}</div>
+<div class="add_content_sub">
+
+<table class="tablex">
+    <thead>
+        <tr>
+            <th>{% trans "Data" %}</th>
+            <th>{% trans "Usuário" %}</th>
+            <th>{% trans "Ação" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in lastchanges %}
+        <tr>
+            <td>{{object.created|date:'d/m/Y H:i:s'}}</td>
+            <td>{{ object.user }} </td>
+            <td>{{ object.msg }} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br/>
+
+<a style="float: left;" href="{% url "webradius:mac_edit" object.pk %}" class="catalog48"/> 
+
+<a style="float: right;" href="{% url "webradius:mac_delete" object.pk %}" class="delete0" onClick="return confirm(' {% trans 'Deseja realmente excluir a máquina' %} '+'{{object.mac}} ?');"> &nbsp; {% trans "Remover a máquina" %} </a> 
+
+{% endblock %}

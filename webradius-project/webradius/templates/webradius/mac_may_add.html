@@ -1,0 +1,13 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{{form.media}}
+{% endblock %}
+{% block titlepage %} {% trans "Máquina não encontrada!" %} {% endblock %}
+{% block titlepageicon %} <div class="ethernet"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<a href="{% url "webradius:mac_add2" mac %}" class="button gray"> {% trans "Adicionar Máquina" %} </a> &nbsp;
+
+{% endblock %}

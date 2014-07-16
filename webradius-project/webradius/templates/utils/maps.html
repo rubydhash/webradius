@@ -1,0 +1,56 @@
+{% load i18n %}
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"> </script>
+<script type="text/javascript"> 
+
+    var geocoder;
+    var map;
+	
+	function initializemap{% if idmaps %}{{idmaps}}{% endif %}() {
+		//MAP
+		var latlngmain = new google.maps.LatLng(-13.667338,-51.943359);
+		var myOptions = {
+		  zoom: 15,
+		  center: latlngmain,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		map = new google.maps.Map(document.getElementById("{% if map_canvas %}{{map_canvas}}{% else %}map_canvas{% endif %}"), myOptions);
+	  
+		//GEOCODER
+		{% if latlng %} var latlng = new google.maps.LatLng({{latlng.0}},{{latlng.1}}); {% endif %}
+   		{% if address %} var address = '{{address}}'; {% endif %}
+
+		geocoder = new google.maps.Geocoder();
+		   geocoder.geocode( {% if latlng %} {'latLng': latlng  } {% else %} {'address': address } {% endif %}, 
+		         function(results, status) {
+		             if (status == google.maps.GeocoderStatus.OK) {
+		               map.setCenter(results[0].geometry.location);
+		               var marker = new google.maps.Marker({
+		                   map: map,
+		                   position: results[0].geometry.location
+		               });
+		             } else {
+		               alert("Geocode was not successful for the following reason: " + status);
+		             }
+		   });
+		}
+</script>
+
+<div id="{% if idmaps %}{{idmaps}}{% else %}maps{% endif %}" title="Maps" style="text-align: left;">
+	{% if jsinitmap %} <input id="printmap" type="button" value="Print"/> {% endif %}
+	<div id="info" style="font-size: 12px;">
+	 {% if displayname %}
+	 	{% trans "Nome" %}: {{ displayname }} <br/>
+	 {% endif %}	
+	 {% trans "Lat/Long" %}: {{ latlng.0}},{{ latlng.1}} <br/>
+	 {% trans "Endereço" %}: {{ address }} 
+ 	</div>
+	 <div id="{% if map_canvas %}{{map_canvas}}{% else %}map_canvas{% endif %}" style="height: 380px; width: 460px;"></div>
+</div>
+
+
+{% if not jsinitmap %}
+<script type="text/javascript" charset="utf-8">
+	initializemap{% if idmaps %}{{idmaps}}{% endif %}();
+</script>
+{% endif %}
+

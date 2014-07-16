@@ -1,0 +1,22 @@
+{% load i18n %}
+{% if erroforms %}
+<div class="ui-widget">
+	<div class="ui-state-error ui-corner-all" style="padding: 10px;">
+		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+		<strong> {% trans "Por favor, corrija os erros abaixo." %}</strong></p>		
+		<br/>
+		{% for form in forms %}
+			{% if form.errors %}
+				{% for field in form %}
+				   {% if field.errors %}
+				    <strong> {{ field.label }} </strong> &nbsp;
+				    <span class="fielderror"> 
+					   {% for error in field.errors %} {{ error }} &nbsp; {% endfor %} 
+					</span> <br/>
+				    {% endif %}
+				{% endfor %}		
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>
+ {% endif %}

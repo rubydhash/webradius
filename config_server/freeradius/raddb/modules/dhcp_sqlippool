@@ -1,0 +1,29 @@
+##  Configuration for DHCP to use SQL IP Pools.
+##
+##  See sqlippool.conf for common configuration explanation
+##
+##  $Id$
+
+sqlippool dhcp_sqlippool {
+	sql-instance-name = "sql"
+
+	ippool_table = "radippool"
+
+	# Esse valor nao esta sendo considerado
+	lease-duration = 7200
+
+	# Client's MAC address is mapped to Calling-Station-Id in policy.conf
+	pool-key = "%{Calling-Station-Id}"
+
+	$INCLUDE ${confdir}/sql/postgresql/ippool-dhcp.conf
+ 
+	sqlippool_log_exists = "DHCP: %{DHCP-Message-Type}: Existing IP: %{reply:Framed-IP-Address} (did %{Called-Station-Id} cli %{Calling-Station-Id} port %{NAS-IP-Address} user %{User-Name})"
+
+	sqlippool_log_success = "DHCP: %{DHCP-Message-Type}: Allocated IP: %{reply:Framed-IP-Address} from %{control:Pool-Name} (did %{Called-Station-Id} cli %{Calling-Station-Id} port %{NAS-IP-Address} user %{User-Name})"
+
+	sqlippool_log_clear = "DHCP: %{DHCP-Message-Type}: Released IP %{Framed-IP-Address} (did %{Called-Station-Id} cli %{Calling-Station-Id} user %{User-Name})"
+
+	sqlippool_log_failed = "DHCP: %{DHCP-Message-Type}: IP Allocation FAILED from %{control:Pool-Name} (did %{Called-Station-Id} cli %{Calling-Station-Id} port %{NAS-IP-Address} user %{User-Name})"
+
+	sqlippool_log_nopool = "DHCP: %{DHCP-Message-Type}: No Pool-Name defined (did %{Called-Station-Id} cli %{Calling-Station-Id} port %{NAS-IP-Address} user %{User-Name})"
+}

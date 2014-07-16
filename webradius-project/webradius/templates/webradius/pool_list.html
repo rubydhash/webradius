@@ -1,0 +1,75 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{{form.media}}
+{% endblock %}
+{% block titlepage %} {% trans "Pools" %} {% endblock %}
+{% block titlepageicon %} <div class="dhcpicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+ 
+<br/>
+<a href="{% url "webradius:pool_add" %}" class="button gray"> {% trans "Adicionar Pool" %} </a> &nbsp;
+<br/>
+<br/>
+
+<table class="tablelist display">
+
+    <thead>
+        <tr>
+            <th>{% trans "Nome" %}</th>
+            <th>{% trans "Endereço inicial" %}</th>
+            <th>{% trans "Endereço final" %}</th>
+            <th>{% trans "Máscara" %}</th>
+            <th>{% trans "Roteador" %}</th>
+            <th>{% trans "Domínio" %}</th>
+            <th>{% trans "DNS 1" %}</th>
+            <th>{% trans "DNS 2" %}</th>
+            <th>{% trans "NTP" %}</th>
+            <th>{% trans "Concessão" %}</th>
+            <th> </th>
+
+        </tr>
+    </thead>
+    <tbody>
+		{% for object in object_list %}
+        <tr>
+            <td><a href="{% url "webradius:pool_detail" object.pk %}">{{ object.pool_name }}</a></td>
+
+			<td>{{ object.init_address }}</td>
+            <td>{{ object.end_address }}</td>
+            <td>{{ object.mask }}</td>
+            <td>{{ object.router_address }}</td>
+            <td>{{ object.domain_name|default_if_none:"" }}</td>
+            <td>{{ object.dns_server }}</td>
+            <td>{{ object.dns_server2|default_if_none:"" }}</td>
+            <td>{{ object.ntp_server|default_if_none:"" }}</td>
+            <td>{{ object.lease_time_delta }}</td>
+
+            <td> <a href="{% url "webradius:pool_edit" object.pk %}" class="edit">&nbsp;</a>  </td> 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include "utils/form_info.html" with form=form %}
+<form id="formsearch" class="formx" action="?t={% now 'YmdHis' %}" method="post" accept-charset="utf-8">
+
+   {% csrf_token %}
+   <div class="add_title_sub"> &nbsp; {% trans "Consulta" %}</div>
+   <div class="add_content_sub" >
+	   <fieldset>
+	        <input type="hidden" name="printpdf" value="" id="idprintpdf"/>
+	   		{% include "utils/form_style.html" with form=form %}
+	   </fieldset>
+	   <input type="hidden" name="submited_form" value="1"/>
+	   <input type="submit" class="button blue" value="{% trans "Consultar" %}" />
+   </div>
+
+</form>
+
+<div style="clear: both;">
+    {% include "utils/btprint.html" with idprint='idprint' idprintpdf='idprintpdf' idform='formsearch' %}
+</div>
+
+{% endblock %}

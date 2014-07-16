@@ -1,0 +1,41 @@
+<script type="text/javascript" charset="utf-8">
+ $(document).ready(function(){     
+	{% if varobj %} var {{varobj}}={% endif %}$('{% if classtable %}.{{classtable}}{% else %}.tablelist{% endif %}').dataTable({
+			"bJQueryUI": true,
+			"sPaginationType": "full_numbers",
+			
+			{% if bLengthChange %} 
+			"bLengthChange": true,
+			{% else %}
+			"bLengthChange": false,
+			{% endif %}
+			
+			{% if disbinfo %}
+			 "bInfo": false,
+			 {% endif %}
+			
+			{% if disbfilter %}
+			"bFilter": false,
+			{% endif %}
+			
+			{% if disbpaginate %}
+			"bPaginate": false,
+			{% endif %}
+			
+			{% if iDisplayLength %}
+			 "iDisplayLength": {{iDisplayLength}},
+			{% else %}
+				"iDisplayLength": 50,
+			{% endif %}
+			{% if disablesort %}
+			 "bSort": false,
+			{% endif %}
+			{% if colsort %}
+		     	{% if sorttype %}
+					"aaSorting": [[{{colsort}},'{{sorttype}}']],
+		 		{% endif %}
+			{% endif %}
+			"oLanguage": { "sUrl": "{{STATIC_URL}}all/js/jquery.dataTables/pt_BR.txt" }
+	 });
+});
+</script>

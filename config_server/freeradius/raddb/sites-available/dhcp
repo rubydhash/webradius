@@ -1,0 +1,133 @@
+server dhcp {
+	listen {
+		type = dhcp
+		ipaddr = IPSERVIDOR
+		port = 67
+		interface = eth0
+		broadcast = yes
+	}
+
+	dhcp DHCP-Discover {
+		dhcp_sqlippool.adjust-request
+		dhcp_sqlippool.fill-static-reply
+		dhcp_sqlippool.check-pool
+
+		# Nao encontrou o pool desse MAC entao retorna NAK
+		if (notfound) {
+			update reply {
+				DHCP-Message-Type = DHCP-NAK
+			}
+			
+			dhcpnopoollog
+			
+			reject
+		}
+		else {
+			# Usa um lease time de 1 minutos para alocar o IP na oferta
+			dhcp_sqlippool.get-offer-lease
+			dhcp_sqlippool
+			# Mas responde com o lease time configurado para o cliente
+			dhcp_sqlippool.get-lease
+			
+			# Se nao conseguiu atribuir IP retorna NAK
+			if (reply:DHCP-Your-IP-Address == 0.0.0.0) {
+				update reply {
+					DHCP-Message-Type = DHCP-NAK
+				}
+				
+				dhcpnofreelog
+			
+				reject
+			}
+			else {
+				# Tudo certo, preenche o resto dos campos da resposta
+				dhcp_sqlippool.fill-reply
+			
+				ok
+			}
+		}
+	}
+
+	dhcp DHCP-Request {
+		dhcp_sqlippool.adjust-request
+		dhcp_sqlippool.fill-static-reply
+		dhcp_sqlippool.check-pool
+		
+		if (notfound) {
+			update reply {
+				DHCP-Message-Type = DHCP-NAK
+			}
+			
+			dhcpnopoollog
+		
+			reject
+		}
+		else {
+			dhcp_sqlippool.get-lease
+			dhcp_sqlippool
+		
+			if (reply:DHCP-Your-IP-Address == 0.0.0.0) {
+				update reply {
+					DHCP-Message-Type = DHCP-NAK
+				}
+				
+				dhcpnofreelog
+				
+				reject
+			}
+			else {
+				dhcp_sqlippool.fill-reply
+				
+				ddns
+				
+				ok
+			}
+		}
+	}
+  
+	dhcp DHCP-Release {
+		dhcp_sqlippool.adjust-request
+		# O modulo DDNS vai remover as entradas DNS e liberar o IP
+		ddns
+	}
+
+	dhcp DHCP-Inform {
+		dhcp_sqlippool.adjust-request
+		dhcp_sqlippool.fill-static-reply
+		
+		# Se o cliente nao tem IP nao envia resposta
+		if (request:DHCP-Client-IP-Address == 0.0.0.0) {
+			update reply {
+				DHCP-Message-Type = 0
+			}
+		}
+		else {
+			dhcp_sqlippool.check-pool
+			
+			# Sem pool associado nao ha resposta
+			if (notfound) {
+				update reply {
+					DHCP-Message-Type = 0
+				}
+				
+				dhcpnopoollog
+			}
+			else {
+				dhcp_sqlippool.fill-reply
+				
+				update reply {
+					# Esse hack abaixo nao e' necessario, e' necessario apenas se for usado o ISC DHCRELAY
+					#DHCP-Your-IP-Address = "%{request:DHCP-Client-IP-Address}"
+					DHCP-Message-Type = DHCP-Ack
+				}
+			
+				ok
+			}
+		}
+	}
+
+	# Outros tipos de mensagem DHCP sao rejeitados
+	dhcp {
+		reject
+	}
+}

@@ -1,0 +1,39 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{% endblock %}
+{% block titlepage %} {% trans "Máquinas provavelmente movidas" %} {% endblock %}
+{% block titlepageicon %} <div class="graphicicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<table class="tablelist display">
+    <thead>
+        <tr>
+            <th>{% trans "Máquina" %} </th>
+            <th>{% trans "Pool associado" %}</th>
+            <th>{% trans "Pool do qual pegou o IP" %}</th>
+            <th>{% trans "IP concedido" %}</th>
+            <th>{% trans "Expiração da concessão" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            <td><a href="{% url "webradius:mac_detail" object.mac_id %}"> {{ object.pool_key }}</a></td>
+            {% if object.static %}
+            	<td>{% trans "IP estático: " %}{{ object.static_ip }}</td>
+            {% else %}
+            	<td><a href="{% url "webradius:pool_detail" object.associated_pool_id %}"> {{ object.associated_pool_name }}</a></td>
+            {% endif %}
+            <td><a href="{% url "webradius:pool_detail" object.effective_pool_id %}"> {{ object.pool_name }}</a></td>
+            <td>{{ object.framedipaddress }}</td>
+            <td>{{ object.expiry_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br/>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{% endblock %}
+{% block titlepage %} {% trans "Home" %} {% endblock %}
+{% block titlepageicon %} <div class="homeicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+
+<div class="add_title_sub" style="width: 700px;"> &nbsp; {% trans "Últimas alterações" %}</div>
+<div class="add_content_sub" style="width: 700px;">
+
+<table class="tablex">
+    <thead>
+        <tr>
+            <th>{% trans "Data" %}</th>
+            <th>{% trans "Usuário" %}</th>
+            <th>{% trans "Ação" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in lastchange %}
+        <tr>
+            <td>{{ object.created|date:'d/m/Y H:i:s' }}</td>
+            <td>{{ object.user }}</td>
+            <td>{{ object.msg_exp|safe }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

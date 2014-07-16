@@ -1,0 +1,34 @@
+{% load i18n %}
+<script type="text/javascript" charset="utf-8">
+     $(document).ready(function(){
+         
+		 $('#{{iddialog}}').hide();
+         $('#{{idlink}}').click(function(event) {
+             	
+             	$( "#{{iddialog}}" ).dialog({
+          			resizable: false,
+          			height:140,
+          			modal: true,
+          			buttons: {
+          				"{% trans 'OK' %}": function() {
+							$('#{{idform}}').submit();
+          				},
+          				"{% trans 'Cancelar' %}": function() {
+          					$(this).dialog( "close" );
+          				}
+          			}
+          		});
+          		
+             
+         });
+
+
+	
+    });
+</script>
+
+
+<div id="{{iddialog}}" style="font-size: 12px; " title="{{ msgtitle }}">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{{ msgconfirm }}</p>
+</div>
+<form id="{{idform}}" action="{{urlrequest}}" method="POST" accept-charset="utf-8">{% csrf_token %}</form>

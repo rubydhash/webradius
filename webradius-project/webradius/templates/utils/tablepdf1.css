@@ -1,0 +1,60 @@
+#box {
+	padding-left: 10px;
+	margin: 0;
+	border: 1px solid #f2f2f2; 
+
+}
+
+#titulo {
+
+  font-size: 15px;
+}
+
+
+.tablex { 
+ width: 100%;
+ font-size: 12px;
+}
+
+.tablex th {
+
+
+background-color: #dcdcdc;
+background-repeat: repeat;
+background-attachment: scroll;
+color: black;
+
+padding-top: 2px;
+padding-bottom: 0px;
+
+border-bottom-width: 0px;
+border-bottom-style: solid;
+border-bottom-color: #cccccc;
+
+border-right-width: 1px;
+border-right-style: solid;
+border-right-color: #cccccc;
+
+
+}
+
+
+.tablex td {
+
+font-size: 10px;
+border-bottom-width: 1px;
+border-bottom-style: solid;
+border-bottom-color: #cccccc;
+
+padding-top: 3px;
+padding-bottom: 0px;
+
+color: black;
+
+}
+
+.tablex td a { 
+text-decoration: none;    
+color: black;
+}
+

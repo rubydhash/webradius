@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	{% load i18n %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+	{% if urlredirect %} <meta http-equiv="refresh" content="3; url={{ urlredirect }}" > {% endif %}
+	<link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}all/css/alert.css"/>
+	<script type="text/javascript" charset="utf-8">                
+	    function backurl() {  
+	         window.setTimeout( function(){ history.go(-1) },3000);  
+	     }                
+	</script>
+</head>
+<body {% if not urlredirect %}onload="backurl();"{% endif %} class="alert">
+  <div class="alert_action_success_cont">
+        <div class="alert_action_error_title"> {% trans "Aviso" %} </div>
+        <div class="alert_action_error_msg"> {% trans "Página não encontrada" %} </div>
+        <div class="alert_action_redirect"> {% trans "Aguarde enquanto você é redirecionado..." %}</div>
+  </div>
+</body>
+</html>

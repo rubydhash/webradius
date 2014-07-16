@@ -1,0 +1,42 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+<style type="text/css" media="screen">
+    td { padding-right: 20px;}
+</style>
+{% endblock %}
+{% block titlepage %} {% trans "Detalhes do NAS" %} {% endblock %}
+{% block titlepageicon %} <div class="dhcpicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<br/><br/>
+<div style="clear:both;"> </div>
+
+<div class="add_title_sub"> &nbsp; {% trans "Dados do NAS" %}</div>
+<div class="add_content_sub" >
+    <table border="0" cellspacing="3" cellpadding="0" style="font-size: 12px;">
+        <tr> 
+            <th></th> <th></th>
+        </tr>
+        <tr> 
+            <td style="font-weight: bold;">{% trans "Nome" %}:</td> <td style="font-weight: bold;">{{ object.shortname }}</td>  
+        </tr>
+        <tr> 
+            <td style="font-weight: bold;">{% trans "DNS ou IP" %}:</td> <td style="font-weight: bold;">{{ object.nasname }}</td>  
+        </tr>    
+        <tr> 
+            <td>{% trans "Descrição" %}:</td> <td>{{ object.description|default_if_none:"" }}</td> 
+        </tr>
+        <tr> 
+            <td>{% trans "Tipo" %}:</td> <td>{{ object.type|default_if_none:"" }}</td>
+        </tr>            
+    </table>
+</div>
+
+<br/>
+
+<a style="float: left;" href="{% url "webradius:nas_edit" object.pk %}" class="catalog48"/>
+
+<a style="float: right;" href="{% url "webradius:nas_delete" object.pk %}" class="delete0" onClick="return confirm(' {% trans 'Deseja realmente excluir o NAS ' %} '+'{{object.mac}} ?');"> &nbsp; {% trans "Remover o NAS" %} </a>
+
+{% endblock %}

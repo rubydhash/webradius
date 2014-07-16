@@ -1,0 +1,23 @@
+#!/bin/bash
+
+FILENAME=oui.txt
+LINK=http://standards.ieee.org/develop/regauth/oui/oui.txt
+
+cd /tmp
+rm $FILENAME
+wget $LINK
+
+rm prefix
+rm vendors
+cat $FILENAME | grep ".*(hex)" | awk -F"\(hex\)" '{ print $1 }' | tr -d ' ' > prefix
+cat $FILENAME | grep ".*(hex)" | awk -F"\(hex\)" '{ print $2 }' | tr -d '\t' > vendors
+paste -d" " prefix vendors | while read from to; do echo "${from}#${to}"; done > loadfile
+# Elimina duplicados baseado no prefixo
+cat loadfile | uniq -w8 > loadfile2
+mv loadfile2 loadfile
+
+# Apaga tudo na tabela
+psql -U postgres -h localhost radius -c "TRUNCATE TABLE macvendor;"
+# Popula a tabela
+LOADFILE="$(pwd)/loadfile"
+psql -U postgres -h localhost radius -c "COPY macvendor FROM '$LOADFILE' DELIMITER '#';"

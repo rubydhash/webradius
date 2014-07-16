@@ -1,0 +1,14 @@
+<div id="msgresult" class="ui-widget">
+				<div class="ui-state-highlight ui-corner-all" style="font-size: 12px; margin-top: 20px; padding: 10px;"> 
+					<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+					<strong> {{ msg }}</strong></p>
+				</div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() { 
+		setTimeout(function() {
+	        $("#msgresult").hide('blind', {}, 500)
+	    }, 5000);
+	});
+</script>	

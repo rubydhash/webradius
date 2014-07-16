@@ -1,0 +1,39 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{% endblock %}
+{% block titlepage %} {% trans "Sessões abertas" %} {% endblock %}
+{% block titlepageicon %} <div class="graphicicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<table class="tablelist display">
+    <thead>
+        <tr>
+            <th>{% trans "Usuário" %} </th>
+            <th>{% trans "NAS" %}</th>
+            <th>{% trans "Dados porta = Unit/Subslot/Porta - VLAN" %}</th>
+            <th>{% trans "Início da sessão" %}</th>
+            <th>{% trans "Tempo de sessão" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+        	{% if object.is_mac %}
+            	<td><a href="{% url "webradius:mac_detail_by_mac" object.username %}"> {{ object.username }}</a></td>
+            {% else %}
+            	<td>{{ object.username }}</td>
+            {% endif %}
+            <td>{{ object.nasipaddress }}</td>
+            <td>{{ object.portdetailed }}</td>
+            <td>{{ object.acctstarttime|date:'d-m-Y H:i' }}</td>
+            <td>{{ object.sessiontime }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br/>
+
+{% endblock %}

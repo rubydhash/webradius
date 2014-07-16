@@ -1,0 +1,86 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{{form.media}}
+{% endblock %}
+{% block titlepage %} {% trans "Máquinas" %} {% endblock %}
+{% block titlepageicon %} <div class="ethernet"> &nbsp; </div>  {% endblock %}
+{% block content %}
+ 
+<br/>
+<a href="{% url "webradius:mac_add" %}" class="button gray"> {% trans "Adicionar Máquina" %} </a> &nbsp;
+<br/>
+<br/>
+
+{% include "utils/form_info.html" with form=form %}
+<form id="formsearch" class="formx" action="?t={% now 'YmdHis' %}" method="post" accept-charset="utf-8">
+   {% csrf_token %}
+   <div class="add_title_sub"> &nbsp; {% trans "Consulta" %}</div>
+   <div class="add_content_sub" >
+	   <fieldset>
+	        <input type="hidden" name="printpdf" value="" id="idprintpdf"/>
+	   		{% include "utils/form_style.html" with form=form %}
+	   </fieldset>
+	   <input type="hidden" name="submited_form" value="1"/>
+	   <input type="submit" class="button blue" value="{% trans "Consultar" %}" />
+   </div>
+</form>
+
+<div style="clear: both;">
+    {% include "utils/btprint.html" with idprint='idprint' idprintpdf='idprintpdf' idform='formsearch' %}
+</div>
+
+<table class="tablelist display">
+
+    <thead>
+        <tr>
+            <th>{% trans "Mac" %} </th>
+            <th>{% trans "Descricao" %}</th>
+            <th>{% trans "Cadastro" %}</th>
+            <th>{% trans "Expiração" %}</th>
+            <th>{% trans "Estático" %}</th>
+            <th>{% trans "IP ou Pool" %}</th>
+            <th>{% trans "VLAN ID" %}</th>
+            <th>{% trans "Acesso Irrestrito" %}</th>
+            <th> </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            <td> <a href="{% url "webradius:mac_detail" object.pk %}"> {{ object.mac }} </a> </td>
+            <td>{{ object.description }} </td>
+            
+            <td>{{ object.insert_date }} </td>
+            
+            {% if object.expiry_time %}
+            	<td> {{ object.expiry_time }} </td>
+            {% else %}
+            	<td>{% trans "Não expira" %} </td>
+            {% endif %}
+            
+            {% if object.static %}
+            	<td>{% trans "Sim" %} </td>
+            	<td> {{ object.static_ip }} </td>
+            {% else %}
+            	<td>{% trans "Não" %} </td>
+            	<td> <a href="{% url "webradius:pool_detail" object.pool.id %}"> {{ object.pool.description }} </a> </td>
+            {% endif %}
+            
+            <td>{{ object.vlan_id|default_if_none:"" }} </td>
+            
+            {% if object.full_access %}
+            	<td>{% trans "Sim" %} </td>
+            {% else %}
+            	<td>{% trans "Não" %} </td>
+            {% endif %}
+
+            <td> <a href="{% url "webradius:mac_edit" object.pk %}" class="edit">&nbsp;</a>  </td> 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

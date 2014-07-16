@@ -1,0 +1,10 @@
+python ddns {
+	mod_instantiate = ddns
+	func_instantiate = instantiate
+
+	mod_post_auth = ddns
+	func_post_auth = post_auth
+
+	mod_detach = ddns
+	func_detach = detach
+}

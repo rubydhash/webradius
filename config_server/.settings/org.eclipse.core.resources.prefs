@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//freeradius/raddb/python/config.py=utf-8
+encoding//freeradius/raddb/python/connpoolbuilder.py=utf-8
+encoding//freeradius/raddb/python/controller.py=utf-8
+encoding//freeradius/raddb/python/datetimeutils.py=utf-8
+encoding//freeradius/raddb/python/ddns.py=utf-8
+encoding//freeradius/raddb/python/dnslease.py=utf-8
+encoding//freeradius/raddb/python/dnsrecord.py=utf-8
+encoding//freeradius/raddb/python/freeradiusfqdn.py=utf-8
+encoding//freeradius/raddb/python/poolinfo.py=utf-8
+encoding//freeradius/raddb/python/radippool.py=utf-8
+encoding//freeradius/raddb/python/rotateddns.py=utf-8
+encoding//freeradius/raddb/python/txthash.py=utf-8

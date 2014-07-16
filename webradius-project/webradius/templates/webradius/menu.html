@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<ul id="nav" class="dropdown dropdown-horizontal">
+    <li> <a href="{% url "webradius:index" %}">{% trans "Home" %}</a> </li>
+    <li> <a href="{% url "webradius:mac_list" %}">{% trans "Máquinas" %}</a> </li>
+    <li> <a href="{% url "webradius:pool_list" %}">{% trans "Pool" %}</a> </li>
+    <li> <a href="{% url "webradius:nas_list" %}">{% trans "NAS" %}</a> </li>
+    <li> <a href="{% url "webradius:reports" %}">{% trans "Relatórios" %}</a> </li>
+
+	{% if user.is_staff %}
+        <li> <a href="{% url "admin:index" %}">{% trans "Configurações" %}</a> </li>
+    {% endif %}
+</ul>

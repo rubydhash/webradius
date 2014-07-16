@@ -1,0 +1,38 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+<style type="text/css" media="screen">
+    td { padding-right: 20px;}
+</style>
+{% endblock %}
+{% block titlepage %} {% trans "Relatórios" %} {% endblock %}
+{% block titlepageicon %} <div class="graphicicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<br/><br/>
+<div style="clear:both;"> </div>
+
+<div class="add_title_sub"> &nbsp; {% trans "Relatórios" %}</div>
+<div class="add_content_sub" >
+    <table border="0" cellspacing="3" cellpadding="0" style="font-size: 12px;">
+        <tr> 
+            <th></th><th></th>
+        </tr>
+        <tr> 
+            <td><a href="{% url "webradius:report_movedmacs" %}">{% trans "Máquinas provavelmente movidas" %}</a></td>  
+        </tr>
+        <tr> 
+            <td><a href="{% url "webradius:report_opensessions" %}">{% trans "Sessões abertas" %}</a></td>  
+        </tr>
+        <tr> 
+            <td><a href="{% url "webradius:report_postauth" %}">{% trans "Erros de autenticação" %}</a></td>  
+        </tr>
+        <tr> 
+            <td><a href="{% url "webradius:report_qtdsessions" %}">{% trans "100 usuários com mais sessões nos últimos 30 dias" %}</a></td>  
+        </tr>
+    </table>
+</div>
+
+<br/>
+
+{% endblock %}

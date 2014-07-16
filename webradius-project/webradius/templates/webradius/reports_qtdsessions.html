@@ -1,0 +1,35 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{% endblock %}
+{% block titlepage %} {% trans "100 usuários com mais sessões nos últimos 30 dias" %} {% endblock %}
+{% block titlepageicon %} <div class="graphicicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<div class="add_title_sub"> &nbsp; {% trans "100 usuários com mais sessões nos últimos 30 dias" %}</div>
+<div class="add_content_sub">
+
+<table class="tablex">
+    <thead>
+        <tr>
+            <th>{% trans "Usuário" %}</th>
+            <th>{% trans "Quantidade de sessões" %} </th>    
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+	        <tr>
+	            <td><a href="{% url "webradius:mac_detail_by_mac" object.username %}"> {{ object.username }}</a></td>
+	            <td>{{ object.user_count }}</td>
+	        </tr>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br/>
+
+{% endblock %}

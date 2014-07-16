@@ -1,0 +1,1026 @@
+ul.messagelist {
+
+    top: -10px; z-index: 1001;
+    
+
+}
+
+ul.messagelist li {
+    display: block;
+    margin: 0 auto 0.5em auto;
+    padding: 25px 10px 15px 55px;
+    border: 1px solid #dcdcdc;
+    width: 450px;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+ul.messagelist li.success {
+	background: #FFFFFF URL('/static/all/img/messages/dialog-success.png') left center no-repeat;
+}
+ul.messagelist li.error {
+	background: #FFFFFF URL('/static/all/img/messages/dialog-error.png') left center no-repeat;
+}
+ul.messagelist li.cancel {
+    background: #FFFFFF URL('/static/all/img/messages/dialog-cancel.png') left center no-repeat;
+}
+ul.messagelist li.info {
+    background: #FFFFFF URL('/static/all/img/messages/dialog-info.png') left center no-repeat;
+}
+ul.messagelist li.warning {
+    background: #FFFFFF URL('/static/all/img/messages/dialog-warning.png') left center no-repeat;
+}
+ul.messagelist li.hehe  {
+    background: #FFFFFF URL('/static/all/img/messages/dialog-heheheh.png') left center no-repeat;
+}
+
+
+ul.messagelist2 {
+
+    top: -10px; z-index: 1001;
+    
+
+}
+
+ul.messagelist2 li {
+    display: block;
+    margin: 0 auto 0.5em auto;
+    padding: 15px 10px 15px 55px;
+    border: 1px solid #dcdcdc;
+    width: 450px;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+ul.messagelist2 li.success {
+	background: #FFFFFF URL('/static/all/img/messages/dialog-success.png') left center no-repeat;
+}
+ul.messagelist2 li.error {
+	background: #FFFFFF URL('/static/all/img/messages/dialog-error.png') left center no-repeat;
+}
+ul.messagelist2 li.cancel {
+    background: #FFFFFF URL('/static/all/img/messages/dialog-cancel.png') left center no-repeat;
+}
+ul.messagelist2 li.info {
+    background: #FFFFFF URL('/static/all/img/messages/dialog-info.png') left center no-repeat;
+}
+ul.messagelist2 li.warning {
+    background: #FFFFFF URL('/static/all/img/messages/dialog-warning.png') left center no-repeat;
+}
+ul.messagelist2 li.hehe  {
+    background: #FFFFFF URL('/static/all/img/messages/dialog-heheheh.png') left center no-repeat;
+}
+
+
+
+.ethernet {
+    background: url('/static/all/img/icons/ethernet-icon.png') no-repeat;
+    padding: 20px 0px 5px 50px;
+    position: relative;
+    float: left;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.ethernet2 {
+    background: url('/static/all/img/icons/ethernet-icon2.png') no-repeat;
+    padding: 10px 0px 0px 30px;
+    position: relative;
+    float: left;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+
+.edit { 
+border: 0px;    
+background: url('/static/all/img/icons/edit.png') no-repeat;
+padding-left: 11px;
+padding-bottom: 2px;
+text-decoration: none;
+
+}
+
+.editback {
+
+    position: relative;
+    background: url('/static/all/img/icons/back-icon_small.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    text-decoration: none;
+}
+
+
+.printer-orange48small { 
+border: 0px;    
+background: url('/static/all/img/icons/printer-orange48small.png') no-repeat;
+padding-left: 11px;
+padding-bottom: 2px;
+text-decoration: none;
+
+}
+
+.boletoiconsmall { 
+border: 0px;    
+background: url('/static/all/img/icons/icone_boletosmall.jpg') no-repeat;
+padding-left: 20px;
+padding-bottom: 2px;
+text-decoration: none;
+}
+
+
+.search16 { 
+border: 0px;    
+background: url('/static/all/img/icons/search16.png') no-repeat;
+padding-left: 20px;
+text-decoration: none;
+}
+
+
+
+.remove { 
+border: 0px;    
+background: url('/static/all/img/icons/trash.png') no-repeat;
+padding-left: 11px;
+padding-bottom: 2px;
+font-size: 12px;
+padding-right: 5px;
+text-decoration: none;
+
+}
+
+
+.add { 
+border: 0px;    
+background: url('/static/all/img/icons/add.gif') no-repeat;
+padding-left: 20px;
+padding-bottom: 2px;
+font-weight: bold;
+font-size: 12px;
+text-decoration: none;
+}
+
+.zoom {
+background: url('/static/all/img/icons/zoom-in16.png') no-repeat;
+padding-left: 20px;
+padding-bottom: 2px;
+font-weight: bold;
+font-size: 12px;
+text-decoration: none;
+}
+
+
+.customermenu {
+    position: relative;
+    background: url('/static/all/img/icons/customersmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+}
+
+.settingsmenu {
+    position: relative;
+    background: url('/static/all/img/icons/settingssmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+}
+
+
+.backupmenu {
+    position: relative;
+    background: url('/static/all/img/icons/harddisksmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+}
+
+.graphicmenu {
+    position: relative;
+    background: url('/static/all/img/icons/graphicsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+}
+
+.connectedmenu {
+    position: relative;
+    background: url('/static/all/img/icons/connectedsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+}
+
+.usermenu { 
+    position: relative;
+    background: url('/static/all/img/icons/usersmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.trafficmenu { 
+    position: relative;
+    background: url('/static/all/img/icons/trafficsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.planmenu { 
+    position: relative;
+    background: url('/static/all/img/icons/plansmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.homemenu { 
+    position: relative;
+    background: url('/static/all/img/icons/homesmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+
+.systemmenu { 
+    position: relative;
+    background: url('/static/all/img/icons/systemsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+
+.reportmenu { 
+    position: relative;
+    background: url('/static/all/img/icons/reportsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.toolmenu {
+    position: relative;
+    background: url('/static/all/img/icons/toolsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    padding-top: 2px;  
+    
+}
+
+.paymentslipmenu {
+    position: relative;
+    background: url('/static/all/img/icons/barcodeiconsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    padding-top: 2px;  
+    
+}
+
+
+.logmenu {
+    position: relative;
+    background: url('/static/all/img/icons/logssmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;  
+    
+}
+
+
+.occurrencemenu { 
+    position: relative;
+    background: url('/static/all/img/icons/occurrencesmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.editdelete {
+    
+    position: relative;
+    background: url('/static/all/img/icons/edit-deletesmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    text-decoration: none;
+}
+
+.ccustoE {
+    
+    position: relative;
+    background: url('/static/all/img/icons/ccusto-in.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    text-decoration: none;
+}
+
+.ccustoS {
+    
+    position: relative;
+    background: url('/static/all/img/icons/ccusto-out.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    text-decoration: none;
+}
+
+
+.helpicon { 
+    position: relative;
+    background: url('/static/all/img/icons/helpsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.softwareupdate { 
+    position: relative;
+    background: url('/static/all/img/icons/softwareupdatesmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+
+
+.searchmenu { 
+    cursor: pointer;
+    position: relative;
+    background: url('/static/all/img/icons/searchicon.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.customericon {
+    background: url('/static/all/img/icons/customer.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px; 
+}
+
+.connectedicon {
+    background: url('/static/all/img/icons/connected.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px; 
+}
+
+.trafficicon {
+    background: url('/static/all/img/icons/traffic.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px; 
+}
+
+
+
+.planicon {
+    background: url('/static/all/img/icons/plan.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px; 
+}
+
+
+.backupicon {
+    background: url('/static/all/img/icons/harddisk.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.rrdtool-icon {
+    background: url('/static/all/img/icons/rrdtool-icon.gif') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.graphicicon {
+    background: url('/static/all/img/icons/graphic.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+
+.etherneticon {
+    background: url('/static/all/img/icons/ethernet-icon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.logsicon {
+    background: url('/static/all/img/icons/logs.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.checkicon {
+    background: url('/static/all/img/icons/check-icon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.checkstatus {
+    
+    position: relative;
+    background: url('/static/all/img/icons/check.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    text-decoration: none;
+}
+
+
+.bankicon {
+    background: url('/static/all/img/icons/bank-icon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.costicon {
+    background: url('/static/all/img/icons/cost_icon.jpg') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.provider_icon {
+    background: url('/static/all/img/icons/provider_icon.png') no-repeat;
+    width: 56px; 
+    height: 56px;
+    border: 0px;    
+}
+
+
+
+.moneyicon {
+    background: transparent url('/static/all/img/icons/moneyicon.png') no-repeat;
+    width: 64px; 
+    height: 64px;
+    border: 0px;    
+}
+
+.addressicon {
+    background: transparent url('/static/all/img/icons/addressicon.png') no-repeat;
+    width: 64px; 
+    height: 64px;
+    border: 0px;    
+}
+
+.accessicon {
+    background: transparent url('/static/all/img/icons/accessicon.png') no-repeat;
+    width: 64px; 
+    height: 64px;
+    border: 0px;    
+}
+
+.infoicon {
+    background: transparent url('/static/all/img/icons/infoicon.jpg') no-repeat;
+    width: 64px; 
+    height: 64px;
+    border: 0px;    
+}
+
+.mapicon {
+    background: transparent url('/static/all/img/icons/mapicon.png') no-repeat;
+    width: 64px; 
+    height: 64px;
+    border: 0px;    
+}
+
+.sysicon {
+    background: transparent url('/static/all/img/icons/sysicon.png') no-repeat;
+    width: 250px; 
+    height: 120px;
+    border: 0px;
+    top: 10px;
+    left: 10px;    
+}
+
+.occurrenceicon {
+    background: transparent url('/static/all/img/icons/occurrence.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+
+.addressfinancialicon {
+    background: transparent url('/static/all/img/icons/addressfinancialicon.png') no-repeat;
+    width: 64px; 
+    height: 64px;
+    border: 0px;    
+}
+
+.calendaricon {
+    background: url('/static/all/img/icons/calendar.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.payicon {
+    background: url('/static/all/img/icons/pay-icon.jpg') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.connecticon {
+    background: url('/static/all/img/icons/connecticon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+
+.layer7icon {
+    background: url('/static/all/img/icons/l7.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.servericon {
+    background: url('/static/all/img/icons/server.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.computericon {
+    background: url('/static/all/img/icons/computericon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.ipicon {
+    background: url('/static/all/img/icons/routeripicon.jpg') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+
+.dhcpicon {
+    background: url('/static/all/img/icons/dhcp-icon.gif') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.homeicon {
+    background: url('/static/all/img/icons/home.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.naticon {
+    background: url('/static/all/img/icons/world-48.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.routeicon {
+    background: url('/static/all/img/icons/route-icon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+
+.radiusicon {
+    background: url('/static/all/img/icons/freeradius-icon.png') no-repeat;
+    width: 188px; 
+    height: 39px;
+    border: 0px;    
+}
+
+.mikrotikicon {
+    background: url('/static/all/img/icons/logo_mikrotik1.jpg') no-repeat;
+    width: 188px; 
+    height: 90px;
+    border: 0px;    
+}
+
+
+
+.accesspointicon {
+    background: url('/static/all/img/icons/wireless_tower.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.pmaccticon {
+    background: url('/static/all/img/icons/download-server-icon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+    text-decoration: none;
+}
+
+.backicon {
+    background: url('/static/all/img/icons/back-icon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.downloadicon {
+    border: 0px;    
+    background: url('/static/all/img/icons/download.png') no-repeat;
+    padding-left: 20px;
+    padding-bottom: 2px;
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;    
+}
+
+.searchip { 
+border: 0px;    
+background: url('/static/all/img/icons/search.gif') no-repeat;
+padding-left: 20px;
+padding-bottom: 2px;
+font-weight: bold;
+
+}
+
+
+.printicon {
+    background: url('/static/all/img/icons/print.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px; 
+}
+
+
+.close { 
+background: url('/static/all/img/icons/x.png') no-repeat;
+border: 0px;
+padding: 10px;
+text-decoration: none;
+
+}
+
+.delete0 { 
+    background: transparent url('/static/all/img/icons/delete-link.png') no-repeat;
+    border: 0px;
+    padding: 5px;
+    padding-top: 0px;
+    text-decoration: none;
+}
+
+
+.form_bt_search {
+	border: 1px solid #8c7d93;
+	background-color: #8c7d93;
+	padding: 3px;
+	color: white;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-right: 10px;
+	float: left;
+}
+.form_bt_search:hover {
+	border: 1px solid #64556b;
+	background-color: #64556b;
+}
+
+.form_bt_add {
+	border: 1px solid #37709f;
+	background-color: #37709f;
+	padding: 3px;
+	color: white;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-right: 10px;
+	float: left;
+}
+.form_bt_add:hover {
+	border: 1px solid #265176;
+	background-color: #265176;
+}
+
+
+
+.form_bt_save {
+	border: 1px solid #fddc23;
+	background-color: #fddc23;
+	padding: 3px;
+	color: black;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-right: 10px;
+	float: left
+}
+.form_bt_save:hover {
+	border: 1px solid #d2ba32;
+	background-color: #d2ba32;
+}
+
+.form_bt_change {
+	border: 1px solid #ff9000;
+	background-color: #ff9000;
+	padding: 3px;
+	color: white;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-right: 10px;
+	float: left
+}
+.form_bt_change:hover {
+	border: 1px solid #ff5a00;
+	background-color: #ff5a00;
+}
+.form_bt_cancel {
+	border: 1px solid #cb1111;
+	background-color: #cb1111;
+	padding: 3px;
+	color: white;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-right: 10px;
+	float: left
+}
+.form_bt_cancel:hover {
+	border: 1px solid #9a1313;
+	background-color: #9a1313;
+}
+
+.form_bt_enable {
+	border: 1px solid #93c192;
+	background-color: #93c192;
+	padding: 3px;
+	color: white;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-right: 10px;
+	float: left
+}
+.form_bt_enable:hover {
+	border: 1px solid #678866;
+	background-color: #678866;
+}
+
+
+.form_bt_search {
+	border: 1px solid #8c7d93;
+	background-color: #8c7d93;
+	padding: 3px;
+	color: white;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-right: 10px;
+	float: left;
+}
+.form_bt_search:hover {
+	border: 1px solid #64556b;
+	background-color: #64556b;
+}
+
+
+
+.paymenticon {
+    background: url('/static/all/img/icons/payment-icon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+
+
+
+.paymentmenu { 
+    position: relative;
+    background: url('/static/all/img/icons/paymenticonsmall.png') no-repeat;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    text-decoration: none;
+    
+}
+
+.receivablemenu { 
+    position: relative;
+    background: url('/static/all/img/icons/cashboxiconsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+
+.bank001 { 
+    position: relative;
+    background: url('/static/all/img/bancos/small/001.jpg') no-repeat;
+    width: 70px;
+    height: 18px;
+    
+}
+
+.bank104 { 
+    position: relative;
+    background: url('/static/all/img/bancos/small/104.jpg') no-repeat;
+    width: 70px;
+    height: 18px;
+}
+
+.bank237 { 
+    position: relative;
+    background: url('/static/all/img/bancos/small/237.jpg') no-repeat;
+    width: 70px;
+    height: 18px;
+}
+
+.bank341 { 
+    position: relative;
+    background: url('/static/all/img/bancos/small/341.jpg') no-repeat;
+    width: 70px;
+    height: 18px;
+}
+
+.bank356 { 
+    position: relative;
+    background: url('/static/all/img/bancos/small/356.jpg') no-repeat;
+    width: 70px;
+    height: 18px;
+}
+
+
+.bank399 { 
+    position: relative;
+    background: url('/static/all/img/bancos/small/399.jpg') no-repeat;
+    width: 70px;
+    height: 18px;
+}
+
+
+.bank409 { 
+    position: relative;
+    background: url('/static/all/img/bancos/small/409.jpg') no-repeat;
+    width: 70px;
+    height: 18px;
+}
+
+
+.mikrotik { 
+    position: relative;
+    background: url('/static/all/img/icons/logo_mikrotik_small.jpg') no-repeat;
+    width: 60px;
+    height: 21px;
+    
+}
+
+.mikrotikssh { 
+    position: relative;
+    background: url('/static/all/img/icons/logo_mikrotik_small.jpg') no-repeat;
+    width: 60px;
+    height: 21px;
+    
+}
+
+
+.retfilemenu { 
+    position: relative;
+    background: url('/static/all/img/icons/retfilesmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.retfileicon { 
+    position: relative;
+    background: url('/static/all/img/icons/retfile.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;
+    
+}
+
+.registermenu { 
+    position: relative;
+    background: url('/static/all/img/icons/registericonsmall.png') no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+
+.registericon {
+    background: url('/static/all/img/icons/register-icon.png') no-repeat;
+    width: 48px; 
+    height: 48px;
+    border: 0px;    
+}
+
+.Folder-Accept48 { background: url('/static/all/img/icons/Folder-Accept48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.analysis48 { background: url('/static/all/img/icons/analysis48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.catalog48 { background: url('/static/all/img/icons/catalog48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.continue48 { background: url('/static/all/img/icons/continue48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.examples48 { background: url('/static/all/img/icons/examples48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.file-explorer48 { background: url('/static/all/img/icons/file-explorer48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.key48 { background: url('/static/all/img/icons/key48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.keys48 { background: url('/static/all/img/icons/keys48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.key48_small { background: url('/static/all/img/icons/key48_small.png') no-repeat; width: 20px; height: 20px; border: 0px; }
+.locked48 { background: url('/static/all/img/icons/locked48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.mailbox48 { background: url('/static/all/img/icons/mailbox48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.options48 { background: url('/static/all/img/icons/options48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.organization48 { background: url('/static/all/img/icons/organization48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.percent48 { background: url('/static/all/img/icons/percent48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.refresh48 { background: url('/static/all/img/icons/refresh48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.rules48 { background: url('/static/all/img/icons/rules48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.surveys48 { background: url('/static/all/img/icons/surveys48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.unlocked48 { background: url('/static/all/img/icons/unlocked48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+
+
+.Package-Accept64 { background: url('/static/all/img/icons/Package-Accept64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.Package-Add64 { background: url('/static/all/img/icons/Package-Add64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.Package-Download64 { background: url('/static/all/img/icons/Package-Download64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.Package-Warning64 { background: url('/static/all/img/icons/Package-Warning64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.Star-Full64 { background: url('/static/all/img/icons/Star-Full64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.Upline48 { background: url('/static/all/img/icons/Upline48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.item-configuration64 { background: url('/static/all/img/icons/item-configuration64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.library64 { background: url('/static/all/img/icons/library64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.payment-card64 { background: url('/static/all/img/icons/payment-card64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.reports48 { background: url('/static/all/img/icons/reports48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.sign-up64 { background: url('/static/all/img/icons/sign-up64.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.wheel48 { background: url('/static/all/img/icons/wheel48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.zoom-in48 { background: url('/static/all/img/icons/zoom-in48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.zoom-out48 { background: url('/static/all/img/icons/zoom-out48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+
+
+.backup-restore48 { background: url('/static/all/img/icons/backup-restore48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.custom-reports48 { background: url('/static/all/img/icons/custom-reports48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.logout48 { background: url('/static/all/img/icons/logout48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.printer-blue48 { background: url('/static/all/img/icons/printer-blue48.png') no-repeat; width: 48px; height: 48px; border: 0px; text-decoration: none;}
+.printer-orange48 { background: url('/static/all/img/icons/printer-orange48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+
+.user-mapping48 { background: url('/static/all/img/icons/user-mapping48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.warning48 { background: url('/static/all/img/icons/warning48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+
+
+.FAQ48 { background: url('/static/all/img/icons/FAQ48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.contact48 { background: url('/static/all/img/icons/contact48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.earning-statements48 { background: url('/static/all/img/icons/earning-statements48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.personal-information48 { background: url('/static/all/img/icons/personal-information48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.search48 { background: url('/static/all/img/icons/search48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.success48 { background: url('/static/all/img/icons/success48.png') no-repeat; width: 48px; height: 48px; border: 0px; }
+.boletoicon { background: url('/static/all/img/icons/icone_boleto.jpg') no-repeat; width: 48px; height: 48px; border: 0px; }
+.disconnect { background: url('/static/all/img/icons/disconnect.png') no-repeat; width: 48px; height: 48px; border: 0px; text-decoration: none;}
+.wireless_icon { background: url('/static/all/img/icons/wireless_icon.jpg') no-repeat; width: 48px; height: 48px; border: 0px; text-decoration: none;}
+
+
+.maps { background: url('/static/all/img/icons/maps.png') no-repeat; width: 48px; height: 48px; border: 0px; text-decoration: none;}
+.maps32 { background: url('/static/all/img/icons/maps32.png') no-repeat; width: 32px; height: 32px; border: 0px; text-decoration: none;}
+
+.contact-icon { background: url('/static/all/img/icons/contact-icon.png') no-repeat; width: 48px; height: 48px; border: 0px; text-decoration: none;}
+.Folder-Accept48 { background: url('/static/all/img/icons/Folder-Accept48.png') no-repeat; width: 48px; height: 48px; border: 0px; text-decoration: none;}
+
+.ssh48 { background: url('/static/all/img/icons/ssh48.png') no-repeat; width: 48px; height: 48px; border: 0px; text-decoration: none;}
+
+
+
+
+

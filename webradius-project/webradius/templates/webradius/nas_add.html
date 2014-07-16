@@ -1,0 +1,29 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{{form.media}}
+{% endblock %}
+{% block titlepage %} {% trans "Cadastro de NAS" %} {% endblock %}
+{% block titlepageicon %} <div class="dhcpicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<div class="ui-widget">
+  <div class="ui-state-error ui-corner-all" style="padding: 10px;">
+    <p><strong>{% trans 'Alterações nessa tabela requerem que o processo do FreeRADIUS seja reiniciado.' %}</strong></p>
+  </div>
+</div>
+
+<br/> 
+{% include "utils/form_info.html" with form=form %}
+<form class="formx" method="post" accept-charset="utf-8">
+  {% csrf_token %}
+  <div class="add_title_sub"> &nbsp; {% trans "Cadastro de NAS" %}</div>
+  <div class="add_content_sub">
+    <fieldset>
+    {% include "utils/form_style.html" with form=form %}
+    </fieldset>
+    <input type="submit" class="button blue" value="{% trans 'Cadastrar' %}" />
+  </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{{form.media}}
+{% endblock %}
+{% block titlepage %} {% trans "Edição de Pool" %} {% endblock %}
+{% block titlepageicon %} <div class="dhcpicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<br/>
+{% include "utils/form_info.html" with form=form %}
+<form class="formx" method="post" accept-charset="utf-8">
+  {% csrf_token %}
+  <div class="add_title_sub"> &nbsp; {% trans "Editar Pool " %}{{ object.pool_name }}</div>
+  <div class="add_content_sub">
+    <fieldset>
+    {% include "utils/form_style.html" with form=form %}
+    </fieldset>
+    <input type="submit" class="button blue" value="{% trans 'Salvar' %}" />
+  </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{% endblock %}
+{% block titlepage %} {% trans "Sessões relacionadas a uma autenticação" %} {% endblock %}
+{% block titlepageicon %} <div class="graphicicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<div class="add_content_sub">
+
+<table class="tablex">
+    <thead>
+        <tr>
+            <th>{% trans "Usuário" %}</th>
+            <th>{% trans "NAS" %}</th>
+            <th>{% trans "Dados porta = Unit/Subslot/Porta - VLAN" %}</th>
+            <th>{% trans "Início da sessão" %}</th>
+            <th>{% trans "Término da sessão" %}</th>
+            <th>{% trans "Causa do término" %}</th>
+            <th>{% trans "Tempo de sessão" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            {% if object.is_mac %}
+            	<td><a href="{% url "webradius:mac_detail_by_mac" object.username %}">{{ object.username }}</a></td>
+            {% else %}
+            	<td>{{ object.username }}</td>
+            {% endif %}
+            {% if object.nas %}
+                <td><a href="{% url "webradius:nas_detail" object.nas.id %}">{{ object.nas.shortname }} - {{ object.nasipaddress }}</a></td>
+            {% else %}
+                <td>{{ object.nasipaddress|default_if_none:"" }}</td>
+            {% endif %}
+            <td>{{ object.portdetailed }}</td>
+            <td>{{ object.acctstarttime|date:'d-m-Y H:i' }}</td>
+            <td>{{ object.acctstoptime|date:'d-m-Y H:i' }}</td>
+            <td>{{ object.acctterminatecause|default_if_none:"" }}</td>
+            <td>{{ object.sessiontime }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br/>
+
+{% endblock %}

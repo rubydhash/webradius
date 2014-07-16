@@ -1,0 +1,10 @@
+<input type="hidden" name="printpdf" value="" id="{{idprintpdf}}"/>
+<a id="{{idprint}}" style="float: right;" class="printer-blue48" href="#"> &nbsp; </a>
+
+<script type="text/javascript" charset="utf-8">
+$('#{{idprint}}').click(function() {
+	$('#{{idprintpdf}}').val('true');
+	$('#{{idform}}').submit();		
+	$('#{{idprintpdf}}').val('');		
+});
+</script>

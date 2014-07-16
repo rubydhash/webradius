@@ -1,0 +1,29 @@
+# -*- text -*-
+#
+#  $Id$
+
+linelog dhcpnofreelog {
+	filename = syslog
+
+	syslog_facility = daemon
+
+	format = "Unknown DHCP message type"
+	reference = "%{%{DHCP-Message-Type}:-format}"
+
+	DHCP-Discover = "DHCP: DHCP-Discover: No free IP on pool %{control:Pool-Name} for MAC %{Calling-Station-Id}"
+	DHCP-Request = "DHCP: DHCP-Request: No free IP on pool %{control:Pool-Name} for MAC %{Calling-Station-Id}"
+	DHCP-Inform = "DHCP: DHCP-Inform: No free IP on pool %{control:Pool-Name} for MAC %{Calling-Station-Id}"
+}
+
+linelog dhcpnopoollog {
+	filename = syslog
+
+	syslog_facility = daemon
+
+	format = "Unknown DHCP message type"
+	reference = "%{%{DHCP-Message-Type}:-format}"
+
+	DHCP-Discover = "DHCP: DHCP-Discover: No pool for MAC or moved to new subnet %{Calling-Station-Id}"
+	DHCP-Request = "DHCP: DHCP-Request: No pool for MAC or moved to new subnet %{Calling-Station-Id}"
+	DHCP-Inform = "DHCP: DHCP-Inform: No pool for MAC or moved to new subnet %{Calling-Station-Id}"
+}

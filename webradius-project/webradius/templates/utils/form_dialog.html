@@ -1,0 +1,10 @@
+{% load i18n %}
+<div id="formdialog" title="{% if object %}{% trans titlemsg %}{% else %}{% trans titlemsg %}{% endif %}">
+	{% include "utils/form_info.html" %}
+     <form class="formx" id="formdialogdata" action="{{urldo}}" method="post">
+		{% csrf_token %}
+		<fieldset>
+		{% include "utils/form_style.html" with form=form %}
+		</fieldset>
+     </form>
+ </div>

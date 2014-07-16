@@ -1,0 +1,163 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" %}
+<style type="text/css" media="screen">
+    td { padding-right: 20px;}
+</style>
+{% endblock %}
+{% block titlepage %} {% trans "Detalhes do Pool" %} {% endblock %}
+{% block titlepageicon %} <div class="dhcpicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<br/><br/>
+<div style="clear:both;"> </div>
+
+<div class="add_title_sub"> &nbsp; {% trans "Endereçamento" %}</div>
+<div class="add_content_sub" >
+    <table border="0" cellspacing="3" cellpadding="0" style="font-size: 12px;">
+        <tr> 
+            <th></th> <th></th>
+        </tr>
+        <tr> 
+            <td style="font-weight: bold;">{% trans "Nome" %}:</td> <td style="font-weight: bold;">{{ object.pool_name }}</td>  
+        </tr>
+        <tr> 
+            <td style="font-weight: bold;">{% trans "Descrição" %}:</td> <td style="font-weight: bold;">{{ object.description }}</td>  
+        </tr>    
+        <tr> 
+            <td>{% trans "Roteador" %}:</td> <td>{{ object.router_address }}</td> 
+        </tr>
+        <tr> 
+            <td>{% trans "Faixa de IPs" %}:</td> <td>{{ object.init_address }} - {{ object.end_address }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "Número de IPs da faixa" %}:</td> <td>{{ object.range|length }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "Máquinas nesse Pool" %}:</td> <td>{{ object.count_machines_on_pool }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "IPs concedidos" %}:</td> <td>{{ object.assigned_ips_count }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "Porcentagem de IPs concedidos" %}:</td> <td>{{ object.assigned_ips_utilization|floatformat:3 }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "Subrede" %}:</td> <td>{{ object.subnet_addr }}/{{ object.cidr_prefix }}</td> 
+        </tr> 
+        <tr> 
+            <td>{% trans "Máscara" %}:</td> <td>{{ object.mask }}</td> 
+        </tr>
+        <tr> 
+            <td>{% trans "Broadcast" %}:</td> <td>{{ object.broadcast }}</td> 
+        </tr>
+        <tr> 
+            <td>{% trans "MTU" %}:</td> <td>{{ object.mtu|default_if_none:"" }}</td>
+        </tr>        
+        <tr> 
+            <td>{% trans "Concessão" %}:</td> <td>{{ object.lease_time_delta }}</td>
+        </tr>   
+        <tr> 
+            <td>{% trans "Gateways associados" %}:</td> <td>{{ object.bind_gateways|default_if_none:"" }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "VLAN ID" %}:</td> <td>{{ object.vlan_id|default_if_none:"" }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="add_title_sub"> &nbsp; {% trans "Domínios" %}</div>
+<div class="add_content_sub" >
+    <table border="0" cellspacing="3" cellpadding="0" style="font-size: 12px;">        
+        <tr> 
+            <td>{% trans "Domínio" %}:</td> <td>{{ object.domain_name|default_if_none:"" }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "Domínio para IP reverso" %}:</td> <td>{{ object.rev_domain_name|default_if_none:"" }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "NetBIOS" %}:</td> <td>{{ object.netbios|default_if_none:"" }}</td>
+        </tr>     
+    </table>
+</div>
+
+<div class="add_title_sub"> &nbsp; {% trans "Servidores" %}</div>
+<div class="add_content_sub" >
+    <table border="0" cellspacing="3" cellpadding="0" style="font-size: 12px;">        
+        <tr> 
+            <td>{% trans "DNS 1" %}:</td> <td>{{ object.dns_server }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "DNS 2" %}:</td> <td>{{ object.dns_server2|default_if_none:"" }}</td>
+        </tr>
+        <tr> 
+            <td>{% trans "NBNS/WINS" %}:</td> <td>{{ object.netbios_name_server|default_if_none:"" }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "NBNS/WINS 2" %}:</td> <td>{{ object.netbios_name_server2|default_if_none:"" }}</td>
+        </tr>
+        <tr>
+        {%  if object.netbios_node_type == 1 %}
+        	<td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Broadcast" %}</td>
+        {% elif object.netbios_node_type == 2 %}
+            <td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Peer" %}</td>
+        {% elif object.netbios_node_type == 4 %}
+            <td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Mixed" %}</td>
+        {% elif object.netbios_node_type == 8 %}
+            <td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Hybrid" %}</td>
+        {% else %}
+            <td>{% trans "Tipo de nó NetBIOS" %}:</td> <td>{% trans "Desconhecido" %}</td>
+        {% endif %}
+        </tr>
+        <tr> 
+            <td>{% trans "NTP" %}:</td> <td>{{ object.ntp_server|default_if_none:"" }}</td>
+        </tr>        
+    </table>
+</div>
+
+<div class="add_title_sub"> &nbsp; {% trans "PXE" %}</div>
+<div class="add_content_sub" >
+    <table border="0" cellspacing="3" cellpadding="0" style="font-size: 12px;">
+    	<tr> 
+            <td>{% trans "Próximo servidor" %}:</td> <td>{{ object.next_server|default_if_none:"" }}</td>
+        </tr>        
+        <tr> 
+            <td>{% trans "Caminho para o arquivo de boot" %}:</td> <td>{{ object.root_path|default_if_none:"" }}</td>
+        </tr>        
+        <tr> 
+            <td>{% trans "Arquivo de boot" %}:</td> <td>{{ object.boot_filename|default_if_none:"" }}</td>
+        </tr>    
+    </table>
+</div>
+
+<div class="add_title_sub"> &nbsp; {% trans "IPs concedidos" %}</div>
+<div class="add_content_sub">
+
+<table class="tablelist display">
+    <thead>
+        <tr>
+            <th>{% trans "IP" %}</th>
+            <th>{% trans "Máquina" %}</th>
+            <th>{% trans "Data de expiração da concessão" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ip in object.assigned_ips %}
+        <tr>            
+            <td>{{ip.framedipaddress}}</td>
+           	<td><a href="{% url 'webradius:mac_detail_by_mac' ip.pool_key %}">{{ ip.pool_key }}</a></td>
+            <td>{{ip.expiry_time|date:'d/m/Y H:i:s'}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br/>
+
+<a style="float: left;" href="{% url "webradius:pool_edit" object.pk %}" class="catalog48"/>
+
+<a style="float: right;" href="{% url "webradius:pool_delete" object.pk %}" class="delete0" onClick="return confirm(' {% trans 'Deseja realmente excluir o Pool ' %} '+'{{object.mac}} ?');"> &nbsp; {% trans "Remover o Pool" %} </a>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load i18n %}
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() { 
+		$("button").button();
+		{% if urlbtrequest %}
+			$('#{{linkid}}').click(function() { 
+				window.location='{{urlbtrequest}}';
+			});
+		{% endif %}
+	});
+</script>
+<button style="float: right;" id="{{linkid}}">{% trans bttxt %}</button>

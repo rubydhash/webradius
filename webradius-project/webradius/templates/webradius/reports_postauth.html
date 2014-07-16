@@ -1,0 +1,47 @@
+{% extends "webradius/base.html" %}
+{% load i18n %}
+{% block extrahead %}
+{% include "utils/datatables.html" with colsort=1 sorttype='asc' %}
+{% endblock %}
+{% block titlepage %} {% trans "Erros de autenticação - Últimos 150" %} {% endblock %}
+{% block titlepageicon %} <div class="graphicicon"> &nbsp; </div>  {% endblock %}
+{% block content %}
+
+<table class="tablelist display">
+    <thead>
+        <tr>
+            <th>{% trans "Usuário" %}</th>
+            <th>{% trans "Resposta" %}</th>
+            <th>{% trans "Data da ultima tentativa" %}</th>
+            <th>{% trans "Dados da porta da ultima tentativa = Unit/Subslot/Porta - VLAN" %}</th>
+            <th>{% trans "NAS da ultima tentativa" %}</th>
+            <th>{% trans "Provável causa" %}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+        	{% if object.is_mac %}
+            	<td><a href="{% url "webradius:mac_detail_by_mac" object.username %}">{{ object.username }}</a></td>
+            {% else %}
+            	<td>{{ object.username }}</td>
+            {% endif %}
+            <td>{{ object.reply }}</td>
+            <td>{{ object.authdate }}</td>
+            <td>{{ object.portdetailed }}</td>
+            {% if object.nas %}
+                <td><a href="{% url "webradius:nas_detail" object.nas.id %}">{{ object.nas.shortname }} - {{ object.nasipaddress }}</a></td>
+            {% else %}
+                <td>{{ object.nasipaddress|default_if_none:"" }}</td>
+            {% endif %}
+            <td>{{ object.reason }}</td>
+            <td><a href="{% url "webradius:report_postauth_sessions" object.id %}" class="zoom">&nbsp;</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br/>
+
+{% endblock %}
