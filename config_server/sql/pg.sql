@@ -57,6 +57,9 @@ CREATE TABLE macinfo
   CONSTRAINT macinfo_mac_key UNIQUE (mac)
 );
 
+ALTER TABLE macinfo ADD COLUMN static_standalone BOOLEAN NOT NULL DEFAULT false;
+UPDATE macinfo SET static_standalone = true WHERE static = true;
+
 CREATE INDEX macinfo_mac ON macinfo USING btree (mac);
 
 /*
