@@ -4,7 +4,7 @@ webradius
 WebRADIUS - FreeRADIUS Django interface
 
 WebRADIUS provide the following features:
-- Python DNS module to inserte DNS reverse entries.
+- Python DNS module to insert DNS reverse entries.
 - Easy Web interface to insert and administrate computers based on MAC and 802.1x.
 - Reports to view resource usage, login events, moved computers, etc.
 - Easy configuration of DHCP, with pools and dynamic VLAN.
